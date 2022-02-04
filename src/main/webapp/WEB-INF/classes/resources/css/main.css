@@ -1,0 +1,51 @@
+
+.nav>li>a {
+	background-color: whitesmoke;
+}
+section {
+	display: flex;
+	margin-left: 30px;
+}
+.tb1 {
+    width: 500px;
+    border-collapse: collapse;
+    margin-left: 30px;
+}
+.tb1 caption {
+    text-align: center;
+}
+.tb1 thead th {
+    width: 25%;
+}
+.tb1 th,
+.tb1 td {
+    padding: 20px 0;
+    border: 1px solid #999;
+    text-align: center;
+}
+.tb1 td {
+    text-align: center;
+}
+
+.tb2 {
+    width: 500px;
+    border-collapse: collapse;
+    margin-left: 30px;
+}
+.tb2 caption {
+    text-align: center;
+}
+.tb2 thead th {
+    width: 25%;
+}
+.tb2 th,
+.tb2 td {
+    padding: 20px 0;
+    border: 1px solid #999;
+    text-align: center;
+}
+.tb2 td {
+    text-align: center;
+}	
+
+
