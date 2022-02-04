@@ -148,7 +148,7 @@
 				</caption>
 				<thead>
 					<tr>
-						<th colspan="4">고객 세부사항</th>
+						<th colspan="4">고객관리 세부사항</th>
 
 
 					</tr>
