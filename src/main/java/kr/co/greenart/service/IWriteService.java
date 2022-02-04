@@ -25,5 +25,8 @@ public interface IWriteService {
 	//이상민 총 수업 횟수
 	public int totalRound(int userInfo);
 	
+	//이상민 이름 클릭했을때 이상민의 수업들었던 이름,내용 금액등을 보여주기
+	public List<ClassInfo> classTotal(int userPk);
+	
 	
 }

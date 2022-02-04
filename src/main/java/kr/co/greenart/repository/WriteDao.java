@@ -12,8 +12,10 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import kr.co.greenart.model.ClassInfo;
+
 import kr.co.greenart.model.LoginInfo;
 import kr.co.greenart.model.UserInfo;
+
 
 @Repository
 public class WriteDao implements lWriteDao {
@@ -80,6 +82,24 @@ public class WriteDao implements lWriteDao {
 
 		return jdbcTemplate.queryForObject("SELECT count(class_round)FROM classinfo where  memberId= ?"
 				, int.class, userInfo);
+	}
+
+	@Override
+	public List<ClassInfo> classTotal(int userPk) {
+//		int a  = (page-1)*5;
+		return jdbcTemplate.query("select class_name, class_date,class_round,cost,content from classinfo where memberId =? ",new ClassInfoRowMappers(), userPk); 
+	}
+	
+	private class ClassInfoRowMappers implements RowMapper<ClassInfo>{		
+		@Override
+		public ClassInfo mapRow(ResultSet rs, int rowNum) throws SQLException {
+			String class_name = rs.getString("class_name");
+			String class_date = rs.getString("class_date");
+			int class_round = rs.getInt("class_round");
+			int cost = rs.getInt("cost");
+			String content = rs.getString("content");
+			return new ClassInfo(class_name,class_date,class_round,cost,content);
+		}
 	}
 
 }

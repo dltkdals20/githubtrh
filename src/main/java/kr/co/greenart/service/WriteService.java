@@ -58,6 +58,14 @@ public class WriteService implements IWriteService{
 	public int totalRound(int userInfo) {
 		return dao.totalCost(userInfo);
 	}
+
+	@Override
+	public List<ClassInfo> classTotal(int userPk) {
+		// TODO Auto-generated method stub
+		return dao.classTotal(userPk);
+	}
+	
+	//이상민 이름 클릭했을때 이상민의 수업들었던 이름,내용 금액등을 보여주기
 	
 	
 

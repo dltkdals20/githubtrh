@@ -9,8 +9,6 @@
 <meta name="viewport" content="width=device" ,initial-scale="1">
 <link rel="stylesheet" href="/resource/css/bootstrap.min.css">
 <style>
-
-
 .inner {
 	width: 1100px;
 	margin: 0 auto;
@@ -18,14 +16,13 @@
 	background-color: #e5e5e5;
 	position: relative;
 	box-sizing: border-box;
-    border-radius: 20px;
+	border-radius: 20px;
 }
 
 .tb1 {
 	position: absolute;
 	margin-left: 30px;
-    margin-right: 30px;
-	
+	margin-right: 30px;
 }
 
 .tb1 caption {
@@ -47,16 +44,16 @@
 	padding: 17px 0;
 }
 
-.tb1 .name { 
+.tb1 .name {
 	width: 200px;
 	height: 5px;
-	
 }
-}
-.tb1 .age { 
-	width: 200px;
 
 }
+.tb1 .age {
+	width: 200px;
+}
+
 .tb1 th {
 	background-color: red;
 }
@@ -64,9 +61,8 @@
 .inner .memberInfo {
 	position: absolute;
 	margin-left: 30px;
-    margin-right: 30px;
+	margin-right: 30px;
 	top: 300px;
-	
 }
 
 .tb2 {
@@ -83,24 +79,31 @@
 	border: 1px solid #999;
 	text-align: center;
 	padding: 17px 0;
-	
 }
+
 .tb2 td {
 	padding: 10px 0;
 	border: 1px solid #999;
 	text-align: center;
 	padding: 20px 0;
-	
 }
+
 .tb2 .className {
 	width: 500px;
 }
+
 .tb2 .classDate {
 	width: 500px;
 }
+
+.tb2 .classRound {
+	width: 200px;
+}
+
 .tb2 .classCost {
 	width: 400px;
 }
+
 .tb2 .classContetn {
 	
 }
@@ -139,7 +142,7 @@
 
 		</div>
 	</nav>
-	<section>	
+	<section>
 		<div class="inner">
 			<table class="tb1">
 				<caption>
@@ -164,9 +167,9 @@
 
 					<tr>
 						<td>구매횟수</td>
-						<td>${round} 번</td>
+						<td>${round}번</td>
 						<td>총금액</td>
-						<td>${cost} 원</td>
+						<td>${cost}원</td>
 					</tr>
 
 					<tr>
@@ -182,6 +185,7 @@
 						<tr>
 							<th class="className">수업이름</th>
 							<th class="classDate">수업날짜</th>
+							<th class="classRound">수업횟수</th>
 							<th class="classCost">금액</th>
 							<th class="classCentent">내용</th>
 
@@ -190,10 +194,17 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td>정진우</td>
-							<td>2022-01-05</td>
-							<td>300,000</td>
-							<td>수업참관을 하엿음</td>
+							<c:if test="${not empty total}">
+								<c:forEach var="Info" items="${total}">
+									<tr>
+										<td>${Info.className}</td>
+										<td>${Info.classDate}</td>
+										<td>${Info.classRound}</td>
+										<td>${Info.cost}</td>
+										<td>${Info.classContent}</td>
+									</tr>
+								</c:forEach>
+							</c:if>
 						</tr>
 					</tbody>
 				</table>
@@ -202,7 +213,7 @@
 		</div>
 	</section>
 
-	
+
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="/resource/js/bootstrap.min.js"></script>

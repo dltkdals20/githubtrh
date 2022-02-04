@@ -21,6 +21,19 @@ public class ClassInfo {
 		this.classContent = classContent;
 		this.memberId = memberId;
 	}
+	
+	
+
+	
+
+	public ClassInfo(String className, String classDate, int classRound, int cost, String classContent) {
+		super();
+		this.className = className;
+		this.classDate = classDate;
+		this.classRound = classRound;
+		this.cost = cost;
+		this.classContent = classContent;
+	}
 
 	public String getClassName() {
 		return className;
