@@ -2,6 +2,7 @@ package kr.co.greenart.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,7 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import kr.co.greenart.model.ClassInfo;
-
+import kr.co.greenart.model.CostInfo;
 import kr.co.greenart.model.LoginInfo;
 import kr.co.greenart.model.UserInfo;
 
@@ -83,7 +84,9 @@ public class WriteDao implements lWriteDao {
 		return jdbcTemplate.queryForObject("SELECT count(class_round)FROM classinfo where  memberId= ?"
 				, int.class, userInfo);
 	}
-
+	
+	
+	//이상민 이름 클릭했을때 이상민의 수업들었던 이름,날짜,횟수 내용을 보여주기
 	@Override
 	public List<ClassInfo> classTotal(int userPk) {
 //		int a  = (page-1)*5;
@@ -96,10 +99,30 @@ public class WriteDao implements lWriteDao {
 			String class_name = rs.getString("class_name");
 			String class_date = rs.getString("class_date");
 			int class_round = rs.getInt("class_round");
-			int cost = rs.getInt("cost");
+			int cost        = rs.getInt("cost");
 			String content = rs.getString("content");
 			return new ClassInfo(class_name,class_date,class_round,cost,content);
 		}
 	}
+	
+//	//이상민 이름 클릭했을때 이상민의 수업들었던 금액보여주기
+//	@Override
+//	public List<CostInfo> classCost(int userPk) {
+//////		int a  = (page-1)*5;
+//		return jdbcTemplate.query("select cost from classinfo where memberId =? ",new ClassCostRowMappers(), userPk); 
+//	}
+//	
+//	private class ClassCostRowMappers implements RowMapper<CostInfo>{		
+//		@Override
+//		public CostInfo mapRow(ResultSet rs, int rowNum) throws SQLException {
+//			List<Integer> list = new ArrayList<>();
+//			int cost = rs.getInt("cost");
+////			list.add(cost);
+//		
+//			return new CostInfo(cost);
+//		}
+	}
 
-}
+	
+
+

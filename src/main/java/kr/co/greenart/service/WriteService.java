@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.greenart.model.ClassInfo;
+import kr.co.greenart.model.CostInfo;
 import kr.co.greenart.model.JoinInfo;
 import kr.co.greenart.model.LoginInfo;
 import kr.co.greenart.model.UserInfo;
@@ -64,6 +65,13 @@ public class WriteService implements IWriteService{
 		// TODO Auto-generated method stub
 		return dao.classTotal(userPk);
 	}
+
+//	//이상민 이름 클릭했을때 이상민의 수업들었던 금액보여주기
+//	@Override
+//	public List<CostInfo> classCost(int userPk) {
+//		// TODO Auto-generated method stub
+//		return dao.classCost(userPk);
+//	}
 	
 	//이상민 이름 클릭했을때 이상민의 수업들었던 이름,내용 금액등을 보여주기
 	

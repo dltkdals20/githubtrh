@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -194,13 +195,14 @@
 					</thead>
 					<tbody>
 						<tr>
+						
 							<c:if test="${not empty total}">
 								<c:forEach var="Info" items="${total}">
 									<tr>
 										<td>${Info.className}</td>
 										<td>${Info.classDate}</td>
 										<td>${Info.classRound}</td>
-										<td>${Info.cost}</td>
+										<td><fmt:formatNumber value="${Info.cost}" /></td>
 										<td>${Info.classContent}</td>
 									</tr>
 								</c:forEach>
@@ -217,5 +219,8 @@
 
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="/resource/js/bootstrap.min.js"></script>
+	<script>
+	document.getElementById('#cost').innerText.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	</script>
 </body>
 </html>

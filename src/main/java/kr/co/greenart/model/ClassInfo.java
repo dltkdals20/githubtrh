@@ -23,8 +23,10 @@ public class ClassInfo {
 	}
 	
 	
-
 	
+	
+
+
 
 	public ClassInfo(String className, String classDate, int classRound, int cost, String classContent) {
 		super();

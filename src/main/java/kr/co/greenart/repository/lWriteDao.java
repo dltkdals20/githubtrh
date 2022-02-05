@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import kr.co.greenart.model.ClassInfo;
+import kr.co.greenart.model.CostInfo;
 import kr.co.greenart.model.JoinInfo;
 import kr.co.greenart.model.LoginInfo;
 import kr.co.greenart.model.UserInfo;
@@ -28,7 +29,10 @@ public interface lWriteDao {
 	//이상민 총 수업 횟수
 	public int totalRound(int userInfo);
 	
-	//이상민 이름 클릭했을때 이상민의 수업들었던 이름,내용 금액등을 보여주기
+	//이상민 이름 클릭했을때 이상민의 수업들었던 이름,내용등을 보여주기(금액제외)
 	public List<ClassInfo> classTotal(int userPk);
 	
+//	//이상민 이름 클릭했을때 이상민의 수업들었던 금액을 보여주기
+//	public List<CostInfo> classCost(int userPk);
+//	
 }

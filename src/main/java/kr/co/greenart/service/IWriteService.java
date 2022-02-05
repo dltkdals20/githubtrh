@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import kr.co.greenart.model.ClassInfo;
+import kr.co.greenart.model.CostInfo;
 import kr.co.greenart.model.UserInfo;
 
 public interface IWriteService {
@@ -28,5 +29,6 @@ public interface IWriteService {
 	//이상민 이름 클릭했을때 이상민의 수업들었던 이름,내용 금액등을 보여주기
 	public List<ClassInfo> classTotal(int userPk);
 	
-	
+//	//이상민 이름 클릭했을때 이상민의 수업들었던 금액을 보여주기
+//	public List<CostInfo> classCost(int userPk);
 }
