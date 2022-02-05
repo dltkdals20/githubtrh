@@ -174,7 +174,7 @@
 
 					<tr>
 						<th colspan="2">구매날짜-현재</th>
-						<th colspan="2">120일</th>
+						<th colspan="2">200일</th>
 					</tr>
 				</tbody>
 			</table>
