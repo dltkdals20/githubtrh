@@ -72,9 +72,13 @@ public class WriteDao implements lWriteDao {
 	// 이상민 고객이 쓴 총 금액을 가져옴.
 	@Override
 	public int totalCost(int userInfo) {
-
-		return jdbcTemplate.queryForObject("SELECT sum(cost)FROM classinfo where  memberId= ?"
-				, int.class, userInfo);
+		try {
+			return jdbcTemplate.queryForObject("SELECT sum(cost)FROM classinfo where  memberId= ?"
+					, int.class, userInfo);			
+		}catch(NullPointerException e) {
+			
+		}
+		return 0;
 	}
 	
 	// 이상민 고객이 신청한 총 횟수를 가져옴.
@@ -105,22 +109,22 @@ public class WriteDao implements lWriteDao {
 		}
 	}
 	
-//	//이상민 이름 클릭했을때 이상민의 수업들었던 금액보여주기
-//	@Override
-//	public List<CostInfo> classCost(int userPk) {
-//////		int a  = (page-1)*5;
-//		return jdbcTemplate.query("select cost from classinfo where memberId =? ",new ClassCostRowMappers(), userPk); 
-//	}
-//	
-//	private class ClassCostRowMappers implements RowMapper<CostInfo>{		
-//		@Override
-//		public CostInfo mapRow(ResultSet rs, int rowNum) throws SQLException {
-//			List<Integer> list = new ArrayList<>();
-//			int cost = rs.getInt("cost");
-////			list.add(cost);
-//		
-//			return new CostInfo(cost);
-//		}
+	// 이상민 고객의 최근 구매 날짜
+	@Override
+	public String buyDate(int date) {
+
+		return jdbcTemplate.queryForObject(
+				"SELECT class_date FROM (select * from classInfo where(memberId,class_date)in(\r\n"
+				+ "		select memberId, max(class_date) as class_date\r\n"
+				+ "        from classInfo group by memberId having memberId = ?\r\n"
+				+ "        )\r\n"
+				+ "        order by class_date desc\r\n"
+				+ "        )t\r\n"
+				+ "        group by t.memberId"
+				, String.class, date);
+	}
+	
+
 	}
 
 	

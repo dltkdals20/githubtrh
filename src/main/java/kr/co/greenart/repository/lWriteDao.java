@@ -34,5 +34,8 @@ public interface lWriteDao {
 	
 //	//이상민 이름 클릭했을때 이상민의 수업들었던 금액을 보여주기
 //	public List<CostInfo> classCost(int userPk);
+	
+	// 이상민 고객의 최근 구매 날짜
+	public String buyDate(int date);
 //	
 }

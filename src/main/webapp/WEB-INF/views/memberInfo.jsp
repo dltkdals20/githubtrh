@@ -175,7 +175,7 @@
 
 					<tr>
 						<th colspan="2">구매날짜-현재</th>
-						<th colspan="2">300일</th>
+						<th colspan="2">${day}</th>
 					</tr>
 				</tbody>
 			</table>

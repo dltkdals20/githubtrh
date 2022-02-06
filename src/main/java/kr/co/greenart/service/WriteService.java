@@ -65,15 +65,13 @@ public class WriteService implements IWriteService{
 		// TODO Auto-generated method stub
 		return dao.classTotal(userPk);
 	}
+	// 이상민 고객의 최근 구매 날짜
+	@Override
+	public String buyDate(int date) {
+		// TODO Auto-generated method stub
+		return dao.buyDate(date);
+	}
 
-//	//이상민 이름 클릭했을때 이상민의 수업들었던 금액보여주기
-//	@Override
-//	public List<CostInfo> classCost(int userPk) {
-//		// TODO Auto-generated method stub
-//		return dao.classCost(userPk);
-//	}
-	
-	//이상민 이름 클릭했을때 이상민의 수업들었던 이름,내용 금액등을 보여주기
 	
 	
 

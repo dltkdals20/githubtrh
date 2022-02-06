@@ -45,6 +45,7 @@ public class MainController {
 		model.addAttribute("list",list);
 		
 		return "memberAdd";
+		
 	}
 	
 	
