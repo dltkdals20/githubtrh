@@ -47,8 +47,7 @@
 		<div class="col-lg-4"></div>
 		<div class="col-lg-4">
 			<div class="jumbtron" style="padding-top: 20px;">
-				<form:form modelAttribute="loginInfo" method="post"
-					action="/mapping/login">
+				<form:form modelAttribute="loginInfo" method="post"	action="/mapping/login">
 					<h3 style="text-align: center;">로그인화면</h3>
 					<div class="form-group">
 						<form:input type="text" class="form-control" placeholder="아이디"

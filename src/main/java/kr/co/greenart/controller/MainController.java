@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.co.greenart.model.DellInfo;
 import kr.co.greenart.model.JoinInfo;
 import kr.co.greenart.model.UserInfo;
 import kr.co.greenart.service.IWriteService;
@@ -29,11 +30,12 @@ public class MainController {
 	private IWriteService service;
 	
 	
-	@Autowired
-	private JoinVlidator validator;
-	
 	@GetMapping(value = "/main")
-	public String dell() {
+	public String dell(Model model) {
+		List<DellInfo> list = service.dellView();
+		System.out.println("dell의 값이 잘 넘어오나요??" +list);
+		model.addAttribute("list",list);
+		
 		return "dellAdd";
 	}
 	@GetMapping(value = "/member")

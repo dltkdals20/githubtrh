@@ -8,6 +8,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device" ,initial-scale="1">
 <link rel="stylesheet" href="/resource/css/bootstrap.min.css">
+<style>
+  .input-group .form-control{
+  	width: 200px;
+  
+  }
+  
+  span.input-group-btn {
+  
+  	left: -900px;
+  	top:10px;
+  }
+  
+  input.form-control {
+  	top:10px;
+  }
+</style>
 <title>회원관리프로그램</title>
 </head>
 <body>
@@ -48,6 +64,15 @@
 				style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
+						<form method="post"	action="/write/find">
+							<div class="input-group">
+								<input type="text" class="form-control" id="userName"name="body"
+									placeholder="고객명을 입력해주세요."> <span
+									class="input-group-btn">
+									<button class="btn btn-secondary" type="submit" id="btn1">찾기</button>
+								</span>
+							</div>
+						</form>
 						<a href="/write/writing" class="btn btn-primary pull-right">고객등록</a>
 						<th style="background-color: #eeeeee; text-align: center;">번호</th>
 						<th style="background-color: #eeeeee; text-align: center;">고객명</th>
@@ -78,6 +103,14 @@
 
 		</div>
 	</div>
+	  <script>
+		let a = '${msg}';
+		if(a ==null){
+	 	 	
+		}else {
+			alert(a) 	
+		}
+	</script>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="/resource/js/bootstrap.min.js"></script>
 </body>

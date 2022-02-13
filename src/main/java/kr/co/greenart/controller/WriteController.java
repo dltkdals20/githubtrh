@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
 import kr.co.greenart.model.ClassInfo;
@@ -31,8 +33,7 @@ import kr.co.greenart.validator.JoinVlidator;
 public class WriteController {
 	private Logger logger = LoggerFactory.getLogger(WriteController.class);
 	
-	@Autowired
-	private IWriteService servicess;
+
 	
 	@Autowired
 	private memberViewController serviceLook;
@@ -43,6 +44,8 @@ public class WriteController {
 	@Autowired
 	private lWriteDao service;
 	
+	@Autowired
+	private IWriteService WriteService;
 	
 	@GetMapping(value = "/writing")
 	public String write() {
@@ -62,24 +65,43 @@ public class WriteController {
 		logger.info(user.toString());
 		//중복된 이름이 작성되지 않도록 중복버튼을 설정하던가
 		//오류 페이지를 가지고 alert 창을 띄는 방법을 해야함.
-		List<UserInfo> list =servicess.look();
-		System.out.println("리스트값이 있는가??" + list);
-		model.addAttribute("list",list);
+			
+		//회원정보 이름,나이,날짜 내용을 추가하는 서비스
 		int userPk =services.pickId;
 		service.add(user,userPk);
+		//memberAdd에 회원정보 이름,나이,날짜 내용들의 리스트를 보여줌.
+		List<UserInfo> list =WriteService.look();
+		System.out.println("리스트값이 있는가??" + list);
 		
-		return "memberInfo";
+		model.addAttribute("list",list);
+		
+		return "memberAdd";
 	}
+	
+	@PostMapping("/find")
+	public String findName(@RequestParam String body, Model model ) {
+		String name = body;
+		System.out.println("바다의 값이 담아져 오나요??" +name);
+		List<UserInfo> findList = service.nameFind(name);
+		String msg="이름을 정확히 입력해주세요";
+		//findList 가 널값이냐
+		if(findList.isEmpty()) {
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"); 
+		model.addAttribute("msg",msg);
+		return "memberAdd";
+			
+		}else
+		//아니냐
+		System.out.println("파인드에 값이 담겨있나요?" + findList);
+		model.addAttribute("list",findList);
+		
+		return "memberAdd";
+	}
+	
+	
 	
 	//고객 정보 페이지에서 거래등록을 해주는 역할
 	
-	@PostMapping("/classAdd")
-	public String dellAdd(ClassInfo classInfo) {
-		logger.info(classInfo.toString());
-		int userId = serviceLook.id;
-		service.ClassInfoAdd(classInfo,userId);
-		
-		return "memberInfo";
-	}
+
 	
 }

@@ -1,40 +1,88 @@
 package kr.co.greenart.model;
 
 public class ClassInfo {
+	private int id;
 	private String className;
 	private String classDate;
 	private int classRound;
 	private int cost;
+	private String inflow;
 	private String classContent;
 	private int memberId;
+	private int count;
 	
 	public ClassInfo() {
 		
 	}
 
-	public ClassInfo(String className, String classDate, int classRound, int cost, String classContent, int memberId) {
+	public ClassInfo(String className, String classDate, int classRound, int cost,String inflow, String classContent, int memberId) {
 		super();
 		this.className = className;
 		this.classDate = classDate;
 		this.classRound = classRound;
 		this.cost = cost;
+		this.inflow=inflow;
 		this.classContent = classContent;
 		this.memberId = memberId;
 	}
 	
 	
+
+
+	public ClassInfo(int id ,String className, String classDate, int classRound, int cost, String inflow, String classContent) {
+		super();
+		this.id = id;
+		this.className = className;
+		this.classDate = classDate;
+		this.classRound = classRound;
+		this.cost = cost;
+		this.inflow=inflow;
+		this.classContent = classContent;
+	}
 	
 	
-
-
-
-	public ClassInfo(String className, String classDate, int classRound, int cost, String classContent) {
+	
+	public ClassInfo(String className, String classDate, int classRound, int cost, String inflow, String classContent) {
 		super();
 		this.className = className;
 		this.classDate = classDate;
 		this.classRound = classRound;
 		this.cost = cost;
+		this.inflow = inflow;
 		this.classContent = classContent;
+	}
+	
+	
+	
+	
+	public ClassInfo(String inflow, int count) {
+		super();
+		this.inflow = inflow;
+		this.count = count;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getInflow() {
+		return inflow;
+	}
+
+	public void setInflow(String inflow) {
+		this.inflow = inflow;
 	}
 
 	public String getClassName() {
@@ -85,11 +133,23 @@ public class ClassInfo {
 		this.memberId = memberId;
 	}
 
-	@Override
-	public String toString() {
-		return "ClassInfo [className=" + className + ", classDate=" + classDate + ", classRound=" + classRound
-				+ ", cost=" + cost + ", classContent=" + classContent + ", memberId=" + memberId + "]";
+	public ClassInfo(int id, String className, String classDate, int classRound, int cost, String inflow,
+			String classContent, int memberId, int count) {
+		super();
+		this.id = id;
+		this.className = className;
+		this.classDate = classDate;
+		this.classRound = classRound;
+		this.cost = cost;
+		this.inflow = inflow;
+		this.classContent = classContent;
+		this.memberId = memberId;
+		this.count = count;
 	}
+
+
+
+	
 	
 	
 	

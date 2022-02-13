@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri ="http://www.springframework.org/tags/form" prefix="form"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri ="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,7 @@
 	</nav>
 	<div class="container">
 		<div class="row">
-			<form method="post" action="/view/classAdd" />
+			<form:form modelAttribute= "list" method="post" action="/update/infoUpdate" >
 			<div class="form-group">
 				<select class="form-control" name="className" path="className">
 					<option value="비지니스">비지니스수업</option>
@@ -56,15 +57,15 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<input type="date" class="form-control" placeholder=""
-					id="classDate" name="classDate" path="date" maxlength="20" />
+				<form:input type="date" class="form-control" placeholder=""
+					id="classDate" name="classDate" path="classDate" maxlength="20" />
 			</div>
 			<div class="form-group">
-				<input type="number" class="form-control" placeholder="수업회차"
-					id="classRound" name="classRound" path="round" maxlength="20" />
+				<form:input type="number" class="form-control" placeholder="수업회차"
+					id="classRound" name="classRound" path="classRound" maxlength="20" />
 			</div>
 			<div class="form-group">
-				<input type="number" class="form-control" placeholder="수업금액입력"
+				<form:input type="number" class="form-control" placeholder="수업금액입력"
 					id="cost" name="cost" path="cost" maxlength="20" />
 			</div>
 			<div class="form-group">
@@ -77,12 +78,11 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<textarea id="editor4" name="classContent" path="text" /></textarea>
+				<form:textarea id="editor4" name="classContent" path="classContent" /></textarea>
 			</div>
 
-
 			<input type="submit" class="btn btn-primary pull-right" value="등록">
-			</form>
+			</form:form>
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

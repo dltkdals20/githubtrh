@@ -105,8 +105,15 @@
 	width: 400px;
 }
 
+.tb2 .classInflow{
+	width: 300px;
+}
 .tb2 .classContetn {
 	
+}
+a.btn.btn-primary.pull-right.a {
+	margin-top: 230px;
+	margin-right: 30px;
 }
 </style>
 <title>회원관리프로그램</title>
@@ -177,6 +184,7 @@
 						<th colspan="2">구매날짜-현재</th>
 						<th colspan="2">${day}</th>
 					</tr>
+					<a href="/view/delete" class="btn btn-primary pull-right a">전체삭제</a>
 				</tbody>
 			</table>
 			<div class="memberInfo">
@@ -188,6 +196,7 @@
 							<th class="classDate">수업날짜</th>
 							<th class="classRound">수업횟수</th>
 							<th class="classCost">금액</th>
+							<th class="classInflow">유입경로</th>
 							<th class="classCentent">내용</th>
 
 
@@ -199,10 +208,11 @@
 							<c:if test="${not empty total}">
 								<c:forEach var="Info" items="${total}">
 									<tr>
-										<td>${Info.className}</td>
+										<td><a href="/update/updating?bbsID=${Info.id}">${Info.className}</a></td>
 										<td>${Info.classDate}</td>
 										<td>${Info.classRound}</td>
 										<td><fmt:formatNumber value="${Info.cost}" /></td>
+										<td>${Info.inflow}</td>
 										<td>${Info.classContent}</td>
 									</tr>
 								</c:forEach>

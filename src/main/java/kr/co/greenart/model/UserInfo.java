@@ -17,7 +17,16 @@ public class UserInfo {
 		this.content = content;
 	}
 	
+	
 
+	public UserInfo(int id, String name, int age, String date, String content) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.date = date;
+		this.content = content;
+	}
 	public UserInfo(int id, String name, String date, String content) {
 		super();
 		this.id = id;
