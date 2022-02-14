@@ -59,11 +59,14 @@ div.input-group {
 	</nav>
 	<div class="container">
 		<div class="row">
-			<form method="post" action="/dell/dellWrite" />
-			<div class="input-group">
-				<input type="date" class="form-control" id="startDate" name="start" />
-				<input type="date" class="form-control" id="endDate" name="end" />
-				<input type="submit" class="btn btn-primary pull-right" />
+			<form method="post" action="/dell/dellWrite">
+				<div class="form-group">
+				<select class="form-control" name="className" path="className">
+					<option value="2024">비지니스수업</option>
+					<option value="2023">셀프코칭수업</option>
+					<option value="2022">코덕코수업</option>
+					<option value="2021">기타수업</option>
+				</select>
 			</div>
 			</form>
 
@@ -139,9 +142,9 @@ div.input-group {
 				</thead>
 				<tbody>
 					<tr>
-						<td>${exC}명</td>
-						<td>${byC}명</td>
-						<td>${reC}명</td>
+						<td>3명</td>
+						<td>4명</td>
+						<td>10명</td>
 					</tr>
 				</tbody>
 			</table>

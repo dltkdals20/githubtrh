@@ -70,11 +70,15 @@ public class WriteController {
 		int userPk =services.pickId;
 		service.add(user,userPk);
 		//memberAdd에 회원정보 이름,나이,날짜 내용들의 리스트를 보여줌.
-		List<UserInfo> list =WriteService.look();
+		int a = 1;
+		List<UserInfo> list =WriteService.look(a);
 		System.out.println("리스트값이 있는가??" + list);
-		
 		model.addAttribute("list",list);
-		
+		//토탈 페이지를 알려줌
+		int results = service.total();
+		int totalpage = (int)Math.ceil(results/10.0);
+		System.out.println("이 숫자를 알려주세요!!!!!!!!!!!!!!!!!!" +totalpage);
+		model.addAttribute("totalpage",totalpage );
 		return "memberAdd";
 	}
 	

@@ -16,7 +16,10 @@ public interface IWriteService {
 	int UserAdd(UserInfo user, int userPk);
 
 	// UserInfo에 있는 id,이름,날짜,내용을 가져오기
-	List<UserInfo> look();
+	List<UserInfo> look(int page);
+	
+	//총페이지 갯수 다오문
+	int total();
 
 	// 회원정보 세부사항에서 이름 나이 가져오기
 	UserInfo UserNameAndAge(int id);
@@ -86,5 +89,12 @@ public interface IWriteService {
 
 	// 메뉴창에서 거래 탭을 누르고 날짜 선택 후 나오는 데이터 중 기타 데이터
 	public int inflowother(String star, String end,String data);
+	
+	//경험고객 데이터
+	int experinceCustomer(String star, String end, int data);
+	//구매고객 데이터
+	int buyCustomer(String star, String end, int data,int dats);
+	//단골고객 데이터
+	int starinceCustomer(String star, String end, int data);
 
 }

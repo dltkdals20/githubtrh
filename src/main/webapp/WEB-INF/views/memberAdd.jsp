@@ -100,16 +100,42 @@
 					</c:if>
 				</tbody>
 			</table>
-
+			<c:if test ="${a == null || a == 0}">
+					<c:if test="${totalpage <= 3}">
+						<c:forEach var = "pageNum1" begin = "1" end = "${totalpage}" >
+			 				<a href = "/main/coutView?page=${pageNum1}&number=${0}" >[${pageNum1}]</a>
+			       		</c:forEach>
+		       		</c:if>
+		       		<c:if test="${totalpage > 3}">
+						<c:forEach var = "pageNum1" begin = "1" end = "3" >
+			 				<a  href = "/main/view?viewpage=${pageNum1}&number=${0}" >[${pageNum1}]</a>
+			       		</c:forEach>
+			       		<a href = "/main/coutView?page=3">다음</a>
+		       		</c:if>
+	       		</c:if>
+	       		<c:if test ="${a != null && a != 0}"> 
+	       			<c:if test="${totalpage <= a+2}">
+	       				<c:if test ="${a != 1}"> 
+				       		<a href ="/main/maius?maius=${a-3}" >이전</a>
+			       		</c:if>
+		       			<c:forEach var = "pageNum1" begin = "${a}" end = "${totalpage}" >
+				 			<a class="pages" href = "/main/view?viewpage=${pageNum1}&number=${a}" >[${pageNum1}]</a>
+				       	</c:forEach>
+			       	</c:if>
+	       			<c:if test="${totalpage > a+2}">
+	       				<c:if test ="${a != 1}"> 
+				       		<a href = "/main/maius?maius=${a-3}" >이전</a>
+				       	</c:if>
+		       			<c:forEach var = "pageNum1" begin = "${a}" end = "${a+2}" >
+				 			<a class="pages" href ="/main/view?viewpage=${pageNum1}&number=${a}" >[${pageNum1}]</a>
+				       	</c:forEach>
+				       	<a href = "/main/coutView?page=${a+2}">다음</a>
+			       	</c:if>
+				</c:if>
 		</div>
 	</div>
 	  <script>
-		let a = '${msg}';
-		if(a ==null){
-	 	 	
-		}else {
-			alert(a) 	
-		}
+		
 	</script>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="/resource/js/bootstrap.min.js"></script>

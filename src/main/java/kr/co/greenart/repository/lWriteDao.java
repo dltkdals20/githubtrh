@@ -18,7 +18,10 @@ public interface lWriteDao {
 	int add(UserInfo user,int userPk);
 	
 	//회원정보 불러오기
-	List<UserInfo> UserInfolook();
+	List<UserInfo> UserInfolook(int page);
+	
+	//총페이지 갯수 다오문
+	int total();
 	
 	//회원정보 세부에서 회원정보 이름,나이 불러오기
 	UserInfo UserNameAndAge(int id);
@@ -87,6 +90,13 @@ public interface lWriteDao {
 	public int inflowFriend(String startDate,String endDate,String data);
 	//메뉴창에서 거래 탭을 누르고 날짜 선택 후 나오는 데이터 중 기타 데이터
 	public int inflowother(String startDate,String endDate,String data);
+	
+	//경험고객 데이터
+	int experinceCustomer(String star, String end, int data);
+	//구매고객 데이터
+	int buyCustomer(String star, String end, int data,int dats);
+	//단골고객 데이터
+	int starinceCustomer(String star, String end, int data);
 		
 	
 }

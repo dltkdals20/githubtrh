@@ -25,7 +25,7 @@ import kr.co.greenart.repository.lWriteDao;
 @Controller
 @RequestMapping("/dell")
 public class DellWriteController {
-
+	
 	private Logger logger = LoggerFactory.getLogger(DellWriteController.class);
 
 	@Autowired
@@ -49,6 +49,7 @@ public class DellWriteController {
 		// 메뉴창에서 거래 탭을 누르고 날짜 선택 후 나오는 데이터 중 총 횟수
 		int round = service.totalRound(startDate, endDate);
 		model.addAttribute("round", round);
+		
 
 		// 메뉴창에서 거래 탭을 누르고 날짜 선택 후 나오는 데이터 중 총 유입경로 데이터
 		//key:블로그 value:2,key:인스타그램 value:3,key:페이스북 value:4,key:지인추천 value:4
@@ -98,6 +99,21 @@ public class DellWriteController {
 		}catch(DataAccessException e) {
 			model.addAttribute("otherD", nullPoint);
 		}
+		int a = 1;
+		int b = 2;
+		int c = 3;
+		//경험고객 데이터
+		int exC = service.experinceCustomer(startDate, endDate, a);
+		System.out.println("값은 무엇인가요 exC " + exC);
+		model.addAttribute("exC", exC);
+		//구매고객 데이터
+		int byC = service.buyCustomer(startDate,endDate, a, b);
+		System.out.println("값은 무엇인가요 byC " + byC);
+		model.addAttribute("byC", byC);
+		//단골고객 데이터
+		int reC = service.starinceCustomer(startDate,endDate, c);
+		System.out.println("값은 무엇인가요 reC " + reC);
+		model.addAttribute("reC", reC);
 		
 		return "dellAdd";
 

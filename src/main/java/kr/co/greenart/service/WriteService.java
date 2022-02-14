@@ -31,9 +31,15 @@ public class WriteService implements IWriteService{
 	}
 
 	@Override
-	public List<UserInfo> look() {
+	public List<UserInfo> look(int page) {
 		// TODO Auto-generated method stub
-		return dao.UserInfolook();
+		return dao.UserInfolook(page);
+	}
+	//토탈 카운트 가져오는 곳
+	@Override
+	public int total() {
+		// TODO Auto-generated method stub
+		return dao.total();
 	}
 	
 	//회원정보 세부사항에서 이름 나이 가져오기
@@ -177,6 +183,26 @@ public class WriteService implements IWriteService{
 		// TODO Auto-generated method stub
 		return dao.inflowother(startDate,endDate,data);
 	}
+
+	@Override
+	public int experinceCustomer(String star, String end, int data) {
+		// TODO Auto-generated method stub
+		return dao.experinceCustomer(star, end, data);
+	}
+
+	@Override
+	public int buyCustomer(String star, String end, int data,int dats) {
+		// TODO Auto-generated method stub
+		return dao.buyCustomer(star, end, data, dats);
+	}
+
+	@Override
+	public int starinceCustomer(String star, String end, int data) {
+		// TODO Auto-generated method stub
+		return dao.starinceCustomer(star, end, data);
+	}
+
+	
 
 	
 	

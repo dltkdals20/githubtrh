@@ -37,8 +37,10 @@ public class WriteDao implements lWriteDao {
 	}
 
 	@Override
-	public List<UserInfo> UserInfolook() {
-		return jdbcTemplate.query("SELECT id,name,date,content FROM userinfo; ", new ListInfoRowMappers());
+	public List<UserInfo> UserInfolook(int page) {
+		int a  = (page-1)*10;
+		System.out.println("페이지 a이는 요?" + a);
+		return jdbcTemplate.query("SELECT id,name,date,content FROM userinfo ORDER BY ID DESC limit 10 offset ?", new ListInfoRowMappers(),a);
 
 		// ListInfoRowMapper를 Autowired 로 쓰는것도 고려해봅시당
 	}
@@ -52,6 +54,11 @@ public class WriteDao implements lWriteDao {
 			String content = rs.getString("content");
 			return new UserInfo(id, name, date, content);
 		}
+	}
+	//토탈페이지 보여주는 다오
+	@Override
+	public int total() {
+		return jdbcTemplate.queryForObject("select count(*) from userInfo", int.class);
 	}
 
 	// 이름과 나이를 이용해서 id 값을 가져오는 서비스
@@ -92,7 +99,7 @@ public class WriteDao implements lWriteDao {
 		}
 		return 0;
 	}
-
+	// 2022년에 수업을 2번이상 구매한 사람들은 몇명인가요?
 	// 이상민 고객이 신청한 총 횟수를 가져옴.
 	@Override
 	public int totalRound(int userInfo) {
@@ -370,5 +377,56 @@ public class WriteDao implements lWriteDao {
 		}
 		return 0;
 	}
+	
+	//경험고객 데이터
+	@Override
+	public int experinceCustomer(String star, String end, int data) {
+		System.out.println("!!!!!!!!!!!!!!!!!!!"+star);
+		System.out.println("!!!!!!!!!!!!!!!!!!!"+end);
+		System.out.println("!!!!!!!!!!!!!!!!!!!"+data);
+		try {	
+			return jdbcTemplate.queryForObject("select\r\n"
+					+ "COUNT(name) as cont\r\n"
+					+ "from userInfo\r\n"
+					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
+					+ "where class_date between ? and ?\r\n"
+					+ "and class_round = ?", int.class, star,end,data);
+		}catch (NullPointerException e){
+			
+		}
+		return 0;
+	}
+	//구매고객 데이터
+	@Override
+	public int buyCustomer(String star, String end, int data, int dats) {
+		try {	
+			return jdbcTemplate.queryForObject("select\r\n"
+					+ "COUNT(name) as cont\r\n"
+					+ "from userInfo\r\n"
+					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
+					+ "where class_date between ? and ?\r\n"
+					+ "and class_round >= ? and class_round < ?", int.class, star,end,data,dats);
+		}catch (NullPointerException e){
+			
+		}
+		return 0;
+	}
+	//단골고객 데이터
+	@Override
+	public int starinceCustomer(String star, String end, int data) {
+		try {	
+			return jdbcTemplate.queryForObject("select\r\n"
+					+ "COUNT(name) as cont\r\n"
+					+ "from userInfo\r\n"
+					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
+					+ "where class_date between ? and ?\r\n"
+					+ "and class_round <= ?", int.class, star,end,data);
+		}catch (NullPointerException e){
+			
+		}
+		return 0;
+	}
+
+
 
 }

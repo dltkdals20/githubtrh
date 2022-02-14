@@ -185,10 +185,14 @@ public class memberViewController {
 			//삭제를 하고 나서 다시 memberAdd jsp를 보여줘야 함
 			// 삭제한 회원정보를 제외하고 다른 회원정보를 보여줌.
 		//memberAdd에 회원정보 이름,나이,날짜 내용들의 리스트를 보여줌.
-			List<UserInfo> list =WriteService.look();
+			int a = 1;
+			List<UserInfo> list =WriteService.look(a);
 			System.out.println("리스트값이 있는가??" + list);
-			
 			model.addAttribute("list",list);
+			//토탈 페이지.
+			int result = service.total();
+			int totalpage = (int)Math.ceil(result/10.0);
+			model.addAttribute("totalpage",totalpage );
 			
 			
 		}else {
@@ -200,10 +204,14 @@ public class memberViewController {
 			//삭제를 하고 나서 다시 memberAdd jsp를 보여줘야 함
 			// 삭제한 회원정보를 제외하고 다른 회원정보를 보여줌.
 		//memberAdd에 회원정보 이름,나이,날짜 내용들의 리스트를 보여줌.
-			List<UserInfo> list =WriteService.look();
+			int a = 1;
+			List<UserInfo> list =WriteService.look(a);
 			System.out.println("리스트값이 있는가??" + list);
-			
 			model.addAttribute("list",list);
+			//토탈 페이지.
+			int result = service.total();
+			int totalpage = (int)Math.ceil(result/10.0);
+			model.addAttribute("totalpage",totalpage );
 		}
 			
 		
