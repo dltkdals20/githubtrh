@@ -37,9 +37,9 @@ div.input-group {
 						거래검색 <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/main/main">년도별</a></li>
+						<li><a href="/year/yearCount">년도별</a></li>
 						<li><a href="#">월별</a></li>
-						<li><a href="#">상세설정</a></li>
+						<li><a href="/main/main">상세설정</a></li>
 					</ul></li>
 				<li><a href="bbs.jsp">고객</a>
 				<li><a href="bbs.jsp">통계</a>
@@ -106,8 +106,8 @@ div.input-group {
 				style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">총금액</th>
-						<th style="background-color: #eeeeee; text-align: center;">거래횟수</th>
+						<th style="background-color: #eeeeee; text-align: center;">총 금액</th>
+						<th style="background-color: #eeeeee; text-align: center;">총 고객</th>
 						<th style="background-color: #eeeeee; text-align: center;">블로그</th>
 						<th style="background-color: #eeeeee; text-align: center;">인스타</th>
 						<th style="background-color: #eeeeee; text-align: center;">페이스북</th>

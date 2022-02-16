@@ -385,42 +385,48 @@ public class WriteDao implements lWriteDao {
 		System.out.println("!!!!!!!!!!!!!!!!!!!"+end);
 		System.out.println("!!!!!!!!!!!!!!!!!!!"+data);
 		try {	
-			return jdbcTemplate.queryForObject("select\r\n"
-					+ "COUNT(name) as cont\r\n"
+			return jdbcTemplate.queryForObject("select count(1) from(\r\n"
+					+ "select\r\n"
+					+ "name ,COUNT(name) as a\r\n"
 					+ "from userInfo\r\n"
 					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
-					+ "where class_date between ? and ?\r\n"
-					+ "and class_round = ?", int.class, star,end,data);
+					+ "where class_date between ? and ? \r\n"
+					+ "group BY name\r\n"
+					+ "having a = ?) b", int.class, star,end,data);
 		}catch (NullPointerException e){
 			
 		}
 		return 0;
 	}
-	//구매고객 데이터
+	//구매고객 데이터 구객고객 기준은 1초과 2이하
 	@Override
 	public int buyCustomer(String star, String end, int data, int dats) {
 		try {	
-			return jdbcTemplate.queryForObject("select\r\n"
-					+ "COUNT(name) as cont\r\n"
+			return jdbcTemplate.queryForObject("select count(1) from(\r\n"
+					+ "select\r\n"
+					+ "name ,COUNT(name) as a\r\n"
 					+ "from userInfo\r\n"
 					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
-					+ "where class_date between ? and ?\r\n"
-					+ "and class_round >= ? and class_round < ?", int.class, star,end,data,dats);
+					+ "where class_date between ? and ? \r\n"
+					+ "group BY name\r\n"
+					+ "having a > ? and a <= ?) b", int.class, star,end,data,dats);
 		}catch (NullPointerException e){
 			
 		}
 		return 0;
 	}
-	//단골고객 데이터
+	//단골고객 데이터 data 3
 	@Override
 	public int starinceCustomer(String star, String end, int data) {
 		try {	
-			return jdbcTemplate.queryForObject("select\r\n"
-					+ "COUNT(name) as cont\r\n"
+			return jdbcTemplate.queryForObject("select count(1) from(\r\n"
+					+ "select\r\n"
+					+ "name ,COUNT(name) as a\r\n"
 					+ "from userInfo\r\n"
 					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
-					+ "where class_date between ? and ?\r\n"
-					+ "and class_round <= ?", int.class, star,end,data);
+					+ "where class_date between ? and ? \r\n"
+					+ "group BY name\r\n"
+					+ "having a >= ?) b", int.class, star,end,data);
 		}catch (NullPointerException e){
 			
 		}
