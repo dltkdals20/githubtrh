@@ -16,19 +16,22 @@ public interface lYearCountSerivce {
 		//메뉴창에서 거래 탭을 누르고 날짜 선택 후 나오는 데이터 중 총 횟수
 		public int totalRound(String date);
 		
+		//메뉴창에서 거래 탭을 누르고 날짜 선택 후 나오는 데이터 중 총 횟수
+		public int totalmember(String date);
+		
 		//메뉴창에서 거래 탭을 누르고 날짜 선택 후 나오는 데이터 중 총 유입경로 데이터
 		public List<InflowInfo> totalInflow(String date);
 		
 		//메뉴창에서 거래 탭을 누르고 날짜 선택 후 나오는 데이터 중 블로그 데이터
-		public int inflowBlog(String date);
+		public int inflowBlog(String date,String blog);
 		//메뉴창에서 거래 탭을 누르고 날짜 선택 후 나오는 데이터 중 인스타 데이터
-		public int inflowInstar(String date);
+		public int inflowInstar(String date,String instar);
 		//메뉴창에서 거래 탭을 누르고 날짜 선택 후 나오는 데이터 중 페이스북 데이터
-		public int inflowFaceBook(String date);
+		public int inflowFaceBook(String date,String face);
 		//메뉴창에서 거래 탭을 누르고 날짜 선택 후 나오는 데이터 중 지인 데이터
-		public int inflowFriend(String date);
+		public int inflowFriend(String date,String friend);
 		//메뉴창에서 거래 탭을 누르고 날짜 선택 후 나오는 데이터 중 기타 데이터
-		public int inflowother(String date);
+		public int inflowother(String date,String other);
 		
 		//경험고객 데이터
 		int experinceCustomer(String date, int data);

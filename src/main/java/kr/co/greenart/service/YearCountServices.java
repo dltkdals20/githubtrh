@@ -20,9 +20,16 @@ public class YearCountServices implements lYearCountSerivce{
 	@Override
 	public int totalCost(String date) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.totalCost(date);
 	}
+	
 	//2022년 총 고객
+	@Override
+	public int totalmember(String date) {
+		// TODO Auto-generated method stub
+		return dao.totalmember(date);
+	}
+	
 	@Override
 	public int totalRound(String date) {
 		// TODO Auto-generated method stub
@@ -35,53 +42,53 @@ public class YearCountServices implements lYearCountSerivce{
 		return null;
 	}
 
+	
 	@Override
-	public int inflowBlog(String date) {
+	public int inflowBlog(String date, String blog) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.inflowBlog(date,blog);
 	}
-
+	
 	@Override
-	public int inflowInstar(String date) {
+	public int inflowInstar(String date, String instar) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.inflowInstar(date,instar);
 	}
-
+	
 	@Override
-	public int inflowFaceBook(String date) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int inflowFaceBook(String date, String face) {
+		return dao.inflowFaceBook(date,face);
 	}
-
+	
 	@Override
-	public int inflowFriend(String date) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int inflowFriend(String date, String friend) {
+		return dao.inflowFriend(date, friend);
 	}
-
+	
 	@Override
-	public int inflowother(String date) {
+	public int inflowother(String date, String other) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.inflowother(date, other);
 	}
-
+	
 	@Override
 	public int experinceCustomer(String date, int data) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.experinceCustomer(date, data);
 	}
 
 	@Override
 	public int buyCustomer(String date, int data, int dats) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.buyCustomer(date, data, dats);
 	}
 
 	@Override
 	public int starinceCustomer(String date, int data) {
 		// TODO Auto-generated method stub
-		return 0;
+		return dao.starinceCustomer(date, data);
 	}
+
 
 	
 	

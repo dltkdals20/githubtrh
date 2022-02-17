@@ -91,9 +91,9 @@ select.form-control {
 				</thead>
 				<tbody>
 							<tr>
-								<td>300</td>
-								<td>3000</td>
-								<td>3000</td>
+								<td>${totalmember}명</td>
+								<td>${totalRound}회</td>
+								<td><fmt:formatNumber value="${totalCost}" />원</td>
 								
 							</tr>
 				</tbody>
@@ -110,12 +110,12 @@ select.form-control {
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>10</td>
-						<td>4</td>
-						<td>3</td>
-						<td>4</td>
-						<td>5</td>
+					<tr>			
+						<td>${blog}</td>
+						<td>${Instar}</td>
+						<td>${face}</td>
+						<td>${fData}</td>
+						<td>${otherD}</td>
 						
 					</tr>
 				</tbody>
@@ -124,18 +124,16 @@ select.form-control {
 				style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">총 고객</th>
 						<th style="background-color: #eeeeee; text-align: center;">경험고객</th>
 						<th style="background-color: #eeeeee; text-align: center;">구매고객</th>
 						<th style="background-color: #eeeeee; text-align: center;">단골고객</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>30명</td>
-						<td>3명</td>
-						<td>4명</td>
-						<td>10명</td>
+					<tr>	
+						<td>${exC}명</td>
+						<td>${byC}명</td>
+						<td>${reC}명</td>
 					</tr>
 				</tbody>
 			</table>

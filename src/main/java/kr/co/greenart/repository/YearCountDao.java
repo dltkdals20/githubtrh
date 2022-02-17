@@ -20,19 +20,26 @@ public class YearCountDao implements lYearCountSerivceDao{
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-
+	
+	//2022% 총 금액
 	@Override
 	public int totalCost(String date) {
-		// TODO Auto-generated method stub
-		return 0;
+		return jdbcTemplate.queryForObject("SELECT sum(cost) FROM classInfo where class_date like'"+date+"%'",int.class);
 	}
-
+	//2022% 총 고객수
 	@Override
-	public int totalRound(String dates) {
+	public int totalmember(String dates) {
 		System.out.println("data값은요?" + dates);
 		return jdbcTemplate.queryForObject("select count(name) from userinfo where date like  '"+dates+"%'",int.class);
 		//return jdbcTemplate.queryForObject("select count(name) from userinfo where date like '"+'?'+"%'",int.class, dates);
 	}
+	//2022% 총 거래수
+	@Override
+	public int totalRound(String date) {
+		// TODO Auto-generated method stub
+		return jdbcTemplate.queryForObject("SELECT count(class_date) FROM classInfo where class_date like '"+date+"%'",int.class);
+	}
+	
 
 	@Override
 	public List<InflowInfo> totalInflow(String date) {
@@ -41,52 +48,135 @@ public class YearCountDao implements lYearCountSerivceDao{
 	}
 
 	@Override
-	public int inflowBlog(String date) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int inflowBlog(String date,String blog) {
+		try {
+			return jdbcTemplate.queryForObject("select\r\n"
+					+ "COUNT(inflow) as cont\r\n"
+					+ "from userInfo\r\n"
+					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
+					+ "where class_date like '"+date+"%'\r\n"
+					+ "group BY inflow\r\n"
+					+ "having inflow =?", int.class, blog);
+		}catch (NullPointerException e){
+			
+			}
+			return 0;
 	}
 
 	@Override
-	public int inflowInstar(String date) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int inflowInstar(String date,String instar) {
+		try {
+			return jdbcTemplate.queryForObject("select\r\n"
+					+ "COUNT(inflow) as cont\r\n"
+					+ "from userInfo\r\n"
+					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
+					+ "where class_date like '"+date+"%'\r\n"
+					+ "group BY inflow\r\n"
+					+ "having inflow =?", int.class, instar);
+		}catch (NullPointerException e){
+			
+			}
+			return 0;
 	}
 
 	@Override
-	public int inflowFaceBook(String date) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int inflowFaceBook(String date,String face) {
+		try {
+			return jdbcTemplate.queryForObject("select\r\n"
+					+ "COUNT(inflow) as cont\r\n"
+					+ "from userInfo\r\n"
+					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
+					+ "where class_date like '"+date+"%'\r\n"
+					+ "group BY inflow\r\n"
+					+ "having inflow =?", int.class, face);
+		}catch (NullPointerException e){
+			
+			}
+			return 0;
+	}
+	@Override
+	public int inflowFriend(String date,String friend) {
+		try {
+			return jdbcTemplate.queryForObject("select\r\n"
+					+ "COUNT(inflow) as cont\r\n"
+					+ "from userInfo\r\n"
+					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
+					+ "where class_date like '"+date+"%'\r\n"
+					+ "group BY inflow\r\n"
+					+ "having inflow =?", int.class, friend);
+		}catch (NullPointerException e){
+			
+			}
+			return 0;
 	}
 
 	@Override
-	public int inflowFriend(String date) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int inflowother(String date) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int inflowother(String date,String other) {
+		try {
+			return jdbcTemplate.queryForObject("select\r\n"
+					+ "COUNT(inflow) as cont\r\n"
+					+ "from userInfo\r\n"
+					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
+					+ "where class_date like'"+date+"%'\r\n"
+					+ "group BY inflow\r\n"
+					+ "having inflow =?", int.class, other);
+		}catch (NullPointerException e){
+			
+			}
+			return 0;
 	}
 
 	@Override
 	public int experinceCustomer(String date, int data) {
-		// TODO Auto-generated method stub
+		try {	
+			return jdbcTemplate.queryForObject("select count(1) from(\r\n"
+					+ "select\r\n"
+					+ "name ,COUNT(name) as a\r\n"
+					+ "from userInfo\r\n"
+					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
+					+ "where class_date like'"+date+"%' \r\n"
+					+ "group BY name\r\n"
+					+ "having a = ?) b", int.class,data);
+		}catch (NullPointerException e){
+			
+		}
 		return 0;
 	}
 
 	@Override
 	public int buyCustomer(String date, int data, int dats) {
-		// TODO Auto-generated method stub
+		try {	
+			return jdbcTemplate.queryForObject("select count(1) from(\r\n"
+					+ "select\r\n"
+					+ "name ,COUNT(name) as a\r\n"
+					+ "from userInfo\r\n"
+					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
+					+ "where class_date like'"+date+"%' \r\n"
+					+ "group BY name\r\n"
+					+ "having a > ? and a <= ?) b", int.class,data,dats);
+		}catch (NullPointerException e){
+			
+		}
 		return 0;
 	}
 
 	@Override
 	public int starinceCustomer(String date, int data) {
-		// TODO Auto-generated method stub
+		try {	
+			return jdbcTemplate.queryForObject("select count(1) from(\r\n"
+					+ "select\r\n"
+					+ "name ,COUNT(name) as a\r\n"
+					+ "from userInfo\r\n"
+					+ "inner join classinfo on userInfo.id = classInfo.memberId\r\n"
+					+ "where class_date like'"+date+"%' \r\n"
+					+ "group BY name\r\n"
+					+ "having a >= ?) b", int.class,data);
+		}catch (NullPointerException e){
+			
+		}
 		return 0;
 	}
+
 	
 
 }
